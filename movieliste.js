@@ -1,15 +1,12 @@
+  
 import React from 'react'
-
+import Moviecard from "./moviecard"
 const  Movieliste =(props) =>{
     return (
-        <div>
-             {props.movieliste.filter(el=>el.title.includes(props.keyword)).map(el=> ( 
-        <div style={{marginTop:"20px",  }}>
-          <h2 style={{color:"blue"}}>{el.title}</h2> 
-           <img  style={{height:"200px"}} src={el.image}/>
-     <p> {el.description}</p>
-           
-        </div>   )  )  } 
+        <div style={{display:"flex",marginTop:"20px",flexWrap: "wrap"}}>
+             {props.movieliste.filter(el=> props.searchstar.rating===el.star  ).filter(el=>el.title.includes(props.keyword))
+             .map(el=> ( 
+      <Moviecard star ={el.star} title={el.title} image={el.image} description={el.description}/>   )  )  } 
         </div>
     )
 }
